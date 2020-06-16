@@ -7,9 +7,9 @@ import{Quote} from '../quote'
 })
 export class QuoteComponent implements OnInit {
 quotes: Quote[]=[
-  new Quote(1,'Friendship','The only way to have a friend is to be one.','Handy Lock',new Date,0,0),
-  new Quote(1,'Motivation','sometimes we are tested not to show our weekness but to discover our strength.','Walt Disney',new Date,0,0),
-  new Quote(1,'Inspiration','It does not matter how slow you go as long as you do not stop.','Rummy',new Date,0,0)
+  new Quote(1,'Friendship','The only way to have a friend is to be one.','Handy Lock',new Date(2020,5,16),0,0),
+  new Quote(1,'Motivation','sometimes we are tested not to show our weekness but to discover our strength.','Walt Disney',new Date(2020,5,16),0,0),
+  new Quote(1,'Inspiration','It does not matter how slow you go as long as you do not stop.','Rummy',new Date(2020,5,16),0,0)
 ]
  
 
@@ -23,6 +23,12 @@ downvotes: number = 0;
 
 upvoteButton(i){
   this.quotes[i].upvote++;
+}
+
+addNewQuote(quote){
+  let quoteLength = this.quotes.length;
+  quote.id = quoteLength + 1;
+  this.quotes.push(quote);
 }
 
 downvoteButton(i){
