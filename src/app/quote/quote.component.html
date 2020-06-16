@@ -1,0 +1,28 @@
+<div class="container">
+    <h1>My Quotes</h1>
+    <hr>
+  <div class="row">
+      <div class="col-md-6">
+          <p>Enjoy Quotes on popular topics like Inspiration, Motivation and Friendship.
+              You can also add your Quotes for future references.
+          </p>
+          <div *ngFor='let quote of quotes; let i = index' >
+            <p>
+                {{quote.name}}<br>
+                {{quote.description}}<br>
+            </p>
+            <button (click)='toggleDetails (i)' class="btn btn-outline-info">Show Details</button><br><br>
+            <div *ngIf='quote.showDescription'>
+                <app-quote-details [quote]='quote' (isComplete) = 'deleteQuote($event, i)'></app-quote-details><br>
+            </div>
+           <div class="vote">
+               <button type="button" class="btn btn-outline-success" (click)='upvoteButton(i)'>  Upvotes..  {{quote.upvote}}</button><br>
+               <button type="button" class="btn btn-outline-success" (click)='downvoteButton(i)'>DownVotes  {{quote.downvote}}</button><br><br>
+           </div>
+        
+          </div>
+         
+          
+      </div>
+  </div>
+</div>
